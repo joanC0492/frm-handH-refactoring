@@ -1,0 +1,217 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+%mb_in_content {
+    @media (min-width: v.$tv) {
+        margin-bottom: m.px-to-vw(16px);
+    }
+
+    @include m.tv {
+        margin-bottom: 10px;
+    }
+}
+
+%button_woocommerce {
+    @include m.button_woocommerce;
+}
+
+.sproduct_info {
+    @media (min-width: v.$tv) {
+        padding-top: m.px-to-vw(283px);
+    }
+
+    @include m.tv {
+        padding-top: 190px;
+    }
+
+    @include m.tablet {
+        padding-top: 162px;
+    }
+
+    .container {
+        &:not(:last-child) {
+            @media (min-width: v.$tv) {
+                margin-bottom: m.px-to-vw(60px);
+            }
+
+            @include m.tv {
+                margin-bottom: 42px;
+            }
+        }
+    }
+
+    .woocommerce-message {
+        width: 100%;
+        outline: none;
+        @include m.flex(space-between, 1rem);
+        font-family: v.$gotham_light;
+
+        &::before {
+            @include m.centerY;
+        }
+
+        &::after {
+            display: none;
+        }
+
+        a {
+            @extend %button_woocommerce;
+        }
+    }
+
+    &-grid {
+        @media (min-width: v.$tv) {
+            display: grid;
+            grid-template-columns: 1fr m.px-to-vw(574px);
+            grid-gap: m.px-to-vw(52px);
+            align-items: center;
+
+            padding-right: m.px-to-vw(32px);
+        }
+
+        @include m.tv {}
+
+        &>* {
+            width: 100%;
+        }
+    }
+
+    &-gallery {
+        .splide {
+            width: 100% !important;
+
+            &__slide,
+            img {
+                width: 100% !important;
+            }
+
+            img {
+                height: auto !important;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            &__pagination {
+                @media (min-width: v.$tv) {
+                    bottom: m.px-to-vw(20px) !important;
+
+                    @include m.flex(center, m.px-to-vw(8px));
+                }
+
+                @include m.tv {
+                    @include m.flex(center, 4px);
+                }
+
+                li {
+                    @media (min-width: v.$tv) {
+                        line-height: m.px-to-vw(8px);
+                    }
+
+                    @include m.tv {
+                        line-height: 6px;
+                    }
+                }
+
+                &__page {
+                    margin: 0 !important;
+                    border-radius: 300px !important;
+                    transform: none !important;
+                    background: #D3C7B6 !important;
+                    opacity: 1 !important;
+
+                    &:not(.is-active) {
+                        @media (min-width: v.$tv) {
+                            @include m.square(m.px-to-vw(8px));
+                        }
+
+                        @include m.tv {
+                            @include m.square(6px);
+                        }
+                    }
+
+                    &.is-active {
+                        @media (min-width: v.$tv) {
+                            width: m.px-to-vw(24px);
+                            height: m.px-to-vw(8px);
+                        }
+
+                        @include m.tv {
+                            width: 18px;
+                            height: 6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-content {
+        @media (min-width: v.$tv) {
+            margin-bottom: m.px-to-vw(40px);
+        }
+
+        @include m.tv {
+            margin-bottom: 30px;
+        }
+
+        &>* {
+            @extend %mb_in_content;
+        }
+
+        h1 {
+            text-align: left;
+            @include m.fz39;
+        }
+    }
+
+    .product-price {
+        .amount {
+            color: v.$light_brown;
+            font-family: v.$gotham_m;
+            font-style: normal;
+            font-weight: 350;
+
+            @media (min-width: v.$tv) {
+                font-size: m.px-to-vw(20px);
+                line-height: m.px-to-vw(32px);
+            }
+
+            @include m.tv {}
+        }
+    }
+
+    .product-content {
+        width: 100%;
+
+        &>* {
+            @extend %mb_in_content;
+        }
+
+        p,
+        li,
+        span {
+            @include m.p2(#333333);
+        }
+    }
+
+    &.pb160px {
+        @include m.pblock160('bottom');
+    }
+
+    .add-to-cart-button {
+        width: 100%;
+
+        form.cart {
+            width: 100%;
+        }
+
+        .quantity {
+            display: none;
+        }
+
+        [type="submit"] {
+            @extend %button_woocommerce;
+        }
+    }
+}

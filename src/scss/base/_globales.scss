@@ -1,0 +1,253 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    margin-top: 0 !important;
+}
+
+body {
+    font-size: 16px;
+    background-color: v.$beige;
+}
+
+.d-block,
+picture {
+    display: block;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.wh-100 {
+    @extend .w-100;
+    @extend .h-100;
+}
+
+img {
+    vertical-align: top;
+    height: auto;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+a,
+button,
+input[type="submit"] {
+    cursor: pointer;
+    @include m.transition;
+}
+
+main,
+section,
+header,
+footer,
+aside {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+textarea,
+button,
+input,
+select,
+option {
+    outline: none;
+}
+
+video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.container {
+    width: 96%;
+
+    @media (min-width: v.$tv) {
+        max-width: m.px-to-vw(1296px);
+    }
+
+    @include m.tv {
+        width: 100%;
+        padding-left: 15%;
+        padding-right: 8%;
+    }
+
+    @include m.desktop{
+        padding-left: 11%;
+        padding-right: 4%;
+    }
+
+    @include m.laptop{
+        padding-left: 4%;
+    }
+
+    margin-inline: auto;
+
+    &_side {
+        width: 96%;
+
+        @media (min-width: v.$tv) {
+            max-width: m.px-to-vw(1608px);
+        }
+
+        @include m.tv {
+            max-width: 1450px;
+        }
+
+        margin-left: auto;
+    }
+}
+
+.container-pages {
+    width: 100%;
+
+    @media (min-width: v.$tv) {
+        max-width: m.px-to-vw(1428px);
+    }
+
+    @include m.tv {
+        
+    }
+}
+
+.pblock160{
+    @include m.pblock160;
+}
+.p12 {
+    font-size: m.px-to-vw(12px);
+    @include m.tv {
+        font-size: 12px;
+    }
+}
+.p14 {
+    font-size: m.px-to-vw(14px);
+    @include m.tv {
+        font-size: 14px;
+    }
+}
+.p16 {
+    font-size: m.px-to-vw(16px);
+    @include m.tv {
+        font-size: 17px;
+    }
+}
+.p18 {
+    font-size: m.px-to-vw(18px);
+    @include m.tv {
+        font-size: 18px;
+    }
+}
+.p20 {
+    font-size: m.px-to-vw(20px);
+    @include m.tv {
+        font-size: 20px;
+    }
+}
+.p24 {
+    font-size: m.px-to-vw(24px);
+    @include m.tv {
+        font-size: 24px;
+    }
+}
+.title_watermark {
+    position: relative;
+    @include m.tablet {
+         overflow: hidden;
+    }
+}
+.watermark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(66%);
+  font-size: m.px-to-vw(136px);
+  white-space: nowrap;
+  transition: transform 4s ease-out;
+  color: v.$clear_brown;
+  z-index: -1;
+  p {
+      font-family: v.$goudy;
+      text-transform: uppercase;
+  }
+  @include m.tv {
+    font-size: 100px;
+    top: 16px;
+  }
+  @include m.desktop {
+    font-size: 70px;
+  }
+  @include m.tablet {
+    display: none;
+  }
+}
+
+.title_watermark.in-view .watermark {
+  transform: translateX(43%);
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.terms_content {
+    padding-block: m.px-to-vw(80px);
+    p {
+        @include m.p;
+        padding-block: 0.5rem;
+    }
+    a {
+        @include m.p;
+        color: v.$light_brown;
+        text-decoration: underline;
+    }
+    @include m.tv {
+        padding-block: 40px;
+    }
+    h6 {
+        @include m.fz31;
+        padding-block: 1rem;
+    }
+    strong {
+        font-weight: 600;
+    }
+}
+
+.gform_confirmation_message{
+    color: v.$black !important;
+    font-family: v.$gotham_light !important;
+    font-weight: 300 !important;
+
+    @media (min-width: v.$tv) {
+        font-size: m.px-to-vw(17px) !important;
+        line-height: m.px-to-vw(23.8px) !important;
+        letter-spacing: m.px-to-vw(1.02px) !important;
+    }
+
+    @include m.tv {
+        font-size: 14.5px !important;
+        line-height: 1.3em !important;
+        letter-spacing: 0.4px !important;
+    }
+}

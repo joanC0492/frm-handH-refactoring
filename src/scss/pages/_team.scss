@@ -1,0 +1,254 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+%mt8 {
+  @media (min-width: v.$tv) {
+    margin-top: m.px-to-vw(8px);
+  }
+
+  @include m.tv {
+    margin-top: 8px;
+  }
+  @include m.desktop {
+    margin-top: 6px;
+  }
+}
+
+.single_team_page {
+  margin-top: m.px-to-vw(220px);
+  margin-bottom: m.px-to-vw(180px);
+
+  @media (max-width: v.$phone) {
+    margin-top: 120px;
+    margin-bottom: 80px;
+    width: 100%;
+  }
+  @include m.desktop {
+    margin-top: 160px;
+    margin-bottom: 120px;
+    width: 100%;
+  }
+
+  &_wrapper {
+    max-width: m.px-to-vw(1364px);
+    width: 100%;
+    margin: 0 auto;
+
+    @include m.tablet {
+      max-width: 100%;
+    }
+
+    @media (max-width: v.$phone) {
+      max-width: 100%;
+      width: 100%;
+      padding: 0 20px;
+      margin: 0;
+    }
+  }
+
+  .single_team_wrapper {
+    display: flex;
+    gap: m.px-to-vw(56px);
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: m.px-to-vw(40px);
+
+    @include m.desktop {
+      gap: 40px;
+      margin-left: 20px;
+    }
+
+    @media (max-width: v.$tablet) {
+      flex-direction: column;
+      max-width: 100% !important;
+      margin-left: 0px;
+    }
+  }
+
+  .single_team_image {
+    width: m.px-to-vw(670px) !important;
+    height: m.px-to-vw(957px);
+    padding: m.px-to-vw(16px);
+    border: 1px solid v.$light_brown;
+
+    @media (max-width: v.$phone) {
+      width: 100% !important;
+      height: auto;
+      padding: 10px;
+    }
+
+    @include m.desktop {
+      max-width: 480px !important;
+      height: auto;
+      padding: 12px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .single_team_info {
+    max-width: m.px-to-vw(675px);
+    width: 100%;
+
+    @media (max-width: v.$phone) {
+      width: 100%;
+    }
+    @include m.desktop {
+      max-width: 480px;
+    }
+
+    .single_team_job_wrapper {
+      margin-bottom: m.px-to-vw(20px);
+
+      @media (max-width: v.$phone) {
+        margin-bottom: 20px;
+      }
+      @include m.desktop {
+        margin-bottom: 16px;
+      }
+
+      .breadlines {
+        @include m.breadlines(v.$black, 1);
+      }
+
+      .single_team_job {
+        @include m.text-base(v.$gotham_light, 300, m.px-to-vw(17px), 100%, 10%);
+        text-transform: uppercase;
+        color: v.$black;
+
+        @media (max-width: v.$phone) {
+          @include m.text-base(v.$gotham_light, 300, 17px, 100%, 10%);
+        }
+        @include m.desktop {
+          font-size: 15px;
+        }
+      }
+    }
+
+    .single_team_name {
+      @include m.text-base(v.$goudysb, 300, m.px-to-vw(50px), 114%, 0);
+      text-transform: uppercase;
+      color: v.$light_brown;
+      margin-bottom: m.px-to-vw(25px);
+
+      @media (max-width: v.$phone) {
+        @include m.text-base(v.$goudysb, 300, 30px, 114%, 0%);
+        margin-bottom: 25px;
+      }
+      @include m.desktop {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .single_team_content {
+      margin-bottom: m.px-to-vw(40px);
+
+      @include m.desktop {
+        margin-bottom: 28px;
+      }
+
+      h3 {
+        @include m.text-base(v.$gotham_light, 400, m.px-to-vw(20px), 140%, 6%);
+        color: v.$black;
+        margin-bottom: m.px-to-vw(15px);
+
+        @media (max-width: v.$phone) {
+          @include m.text-base(v.$gotham_light, 400, 20px, 140%, 6%);
+          margin-bottom: 15px;
+        }
+        @include m.desktop {
+          font-size: 18px;
+          margin-bottom: 12px;
+        }
+      }
+
+      p {
+        @include m.text-base(v.$gotham_light, 300, m.px-to-vw(17px), 140%, 6%);
+        color: v.$black;
+        margin-bottom: m.px-to-vw(15px);
+
+        @media (max-width: v.$phone) {
+          @include m.text-base(v.$gotham_light, 300, 17px, 140%, 6%);
+          margin-bottom: 15px;
+        }
+        @include m.desktop {
+          font-size: 15px;
+          margin-bottom: 12px;
+        }
+      }
+
+      strong {
+        font-weight: 400 !important;
+      }
+    }
+
+    .single_team_email,
+    .single_team_phone {
+      @include m.text-base(v.$gotham_light, 300, m.px-to-vw(17px), 140%, 6%);
+      color: v.$black;
+
+      @media (max-width: v.$phone) {
+        @include m.text-base(v.$gotham_light, 200, 17px, 140%, 6%);
+      }
+      @include m.desktop {
+        font-size: 15px;
+      }
+
+      a {
+        color: v.$light_brown;
+        font-weight: 600;
+        text-decoration: underline;
+        margin-bottom: m.px-to-vw(5px);
+        
+        @media (max-width: v.$phone) {
+          margin-bottom: 5px;
+        }
+        @include m.desktop {
+          margin-bottom: 4px;
+        }
+      }
+
+      strong {
+        font-weight: 700;
+      }
+    }
+
+    .single_team_back {
+      a {
+        font-weight: bold;
+        color: #9a7a4f;
+        text-decoration: none;
+      }
+    }
+
+    .single_team_achievements {
+      @media (min-width: v.$tv) {
+        margin-top: m.px-to-vw(40px);
+        height: m.px-to-vw(160px);
+
+        img {
+          height: 100%;
+        }
+      }
+
+      @include m.desktop {
+        margin-top: 28px;
+        width: 220px;
+      }
+
+      @media (max-width: v.$phone) {
+        margin-top: 40px;
+        width: 280px;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

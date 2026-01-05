@@ -1,0 +1,634 @@
+@use "base/mixins" as m;
+@use "base/variables" as v;
+
+.footer {
+    position: relative;
+    overflow: hidden;
+    z-index: 3;
+    background: v.$bg;
+
+    @media (min-width: v.$tv) {
+        padding-block: m.px-to-vw(64px) m.px-to-vw(30px);
+    }
+
+    @include m.tv {
+        padding-block: 64px 30px;
+    }
+
+    &_container {
+        width: 100%;
+
+        @media (min-width: v.$tv) {
+            padding-inline: m.px-to-vw(180px);
+        }
+
+        @include m.tv {
+            padding-inline: 90px;
+            max-width: 1560px;
+        }
+
+        @include m.desktop {
+            padding-inline: 5%;
+        }
+
+        @include m.laptop{
+            padding-inline: 4%;
+        }
+    }
+
+    &_top {
+        @include m.flex(center);
+        position: relative;
+
+        @media (min-width: v.$tv) {
+            margin-bottom: m.px-to-vw(20px);
+        }
+
+        @include m.tv {
+            margin-bottom: 14px;
+        }
+
+        &::before,
+        &::after {
+            position: absolute;
+            @include m.centerY;
+            content: '';
+            background: v.$light_brown;
+
+            @media (min-width: v.$tv) {
+                height: m.px-to-vw(1px);
+                width: m.px-to-vw(678px);
+            }
+
+            @include m.tv {
+                height: 1px;
+                width: calc(50% - 80px);
+            }
+        }
+
+        &::before {
+            left: 0;
+
+            @include m.tablet {
+                width: 120px;
+            }
+        }
+
+        &::after {
+            right: 0;
+
+            @include m.tablet {
+                width: 120px;
+            }
+        }
+    }
+
+    &_logo {
+        @media (min-width: v.$tv) {
+            max-width: m.px-to-vw(108px);
+            margin-bottom: m.px-to-vw(36px);
+        }
+
+        @include m.tv {
+            max-width: 80px;
+            margin-bottom: 25px;
+        }
+
+        @include m.tablet {}
+    }
+
+    &_grid {
+        @media (min-width: v.$tv) {
+            display: grid;
+            grid-template-columns: m.px-to-vw(375px) 1fr;
+            grid-gap: m.px-to-vw(20px);
+        }
+
+        @include m.tv {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            grid-gap: 20px;
+        }
+
+        @media (max-width: 860px) {
+            grid-template-columns: 100%;
+
+            &>div:last-child{
+                order: -1;
+            }
+        }
+    }
+
+    &_row {
+        @media (min-width: v.$tv) {
+            @include m.flex(center, m.px-to-vw(20px));
+            align-items: flex-start;
+            margin-bottom: m.px-to-vw(56px);
+        }
+
+        @include m.tv {
+            @include m.flex(center, 14px);
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+        @include m.laptop {
+            gap: 20px;
+        }
+
+        &>* {
+            @media (min-width: v.$laptop) {
+                flex: 1;
+            }
+
+            @include m.laptop {
+                width: 100%;
+            }
+        }
+    }
+
+    &_nav {
+        @include m.tablet {
+            padding-bottom: 20px;
+        }
+
+        &-head {
+            @media (min-width: v.$tv) {
+                margin-bottom: m.px-to-vw(30px);
+            }
+
+            @include m.tv {
+                margin-bottom: 22px;
+            }
+
+            @include m.laptop{
+                margin-bottom: 12px;
+            }
+
+            @include m.h3;
+
+            @media (min-width: v.$tv) {
+                -webkit-text-stroke: m.px-to-vw(0.25px);
+            }
+
+            @include m.tv {
+                -webkit-text-stroke: 0.25px;
+            }
+        }
+
+        &-description {
+            @include m.p;
+
+            @include m.tablet {
+                padding-bottom: 20px;
+            }
+        }
+
+        &-body {
+            @media (min-width: v.$tv) {
+                @include m.flex(center, m.px-to-vw(18px));
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            @include m.tv {
+                @include m.flex(center, 18px);
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            div {
+                width: 100%;
+
+                @media (min-width: v.$tv) {
+                    max-width: m.px-to-vw(268px);
+                }
+
+                @include m.tv {
+                    max-width: 268px;
+                }
+            }
+
+            b {
+                @include m.h3v2(v.$black, v.$gotham_m, false);
+
+                @media (min-width: v.$tv) {
+                    margin-bottom: m.px-to-vw(8px);
+                }
+
+                @include m.tv {
+                    margin-bottom: 8px;
+                }
+            }
+
+            p,
+            a {
+                @include m.p;
+            }
+        }
+
+        &-list {
+            a {
+                display: block;
+                @include m.p;
+
+                &:not(:last-child) {
+                    @media (min-width: v.$tv) {
+                        margin-bottom: m.px-to-vw(6px);
+                    }
+
+                    @include m.tv {
+                        margin-bottom: 4px;
+                    }
+                }
+            }
+        }
+    }
+
+    &_bottom {
+        width: 100%;
+
+        @media (min-width: v.$tv) {
+            display: grid;
+            grid-template-columns: m.px-to-vw(670px) 1fr;
+            grid-gap: m.px-to-vw(120px);
+        }
+
+        @include m.tv {
+            display: grid;
+            grid-template-columns: 57% 1fr;
+            grid-gap: 60px;
+        }
+
+        @include m.desktop {
+            grid-template-columns: 100%;
+        }
+
+        &>* {
+            width: 100%;
+        }
+    }
+
+    &_credits {
+        width: 100%;
+        @include m.flex(space-between, 1rem);
+
+        @media (min-width: v.$tv) {
+            margin-top: m.px-to-vw(50px);
+            border-top: m.px-to-vw(1px) solid v.$light_brown;
+            padding-top: m.px-to-vw(30px);
+        }
+
+        @include m.tv {
+            margin-top: 34px;
+            border-top: 1px solid v.$light_brown;
+            padding-top: 20px;
+        }
+
+        @include m.laptop{
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        p,
+        a {
+            @include m.p(v.$light_brown);
+        }
+    }
+
+    &_east {
+        width: 100%;
+
+        @media (min-width: v.$tv) {
+            margin-top: m.px-to-vw(67px);
+        }
+
+        @include m.tv {
+            margin-top: 48px;
+        }
+
+        @include m.laptop{
+            margin-top: 32px;
+        }
+
+        b {
+            @include m.p;
+            font-family: v.$gotham_m;
+            font-weight: 400;
+            margin-bottom: m.px-to-vw(12px);
+
+            @include m.tv {
+                margin-bottom: 12px;
+            }
+        }
+
+        img {
+            display: block;
+            object-fit: contain;
+
+            @media (min-width: v.$tv) {
+                margin-top: m.px-to-vw(18px);
+                max-width: m.px-to-vw(265.79px);
+            }
+
+            @include m.tv {
+                margin-top: 13px;
+                max-width: 240px;
+            }
+
+            @include m.tablet {
+                padding-block: 20px;
+            }
+        }
+    }
+
+    &_award {
+        @include m.tablet {
+            text-align: center;
+        }
+
+        &>img {
+            @media (min-width: v.$tv) {
+                max-width: m.px-to-vw(183.19px);
+            }
+
+            @include m.tv {
+                max-width: 133px;
+            }
+
+            @include m.tablet {
+                max-width: 100px;
+            }
+
+        }
+
+        .social {
+            @include m.social_list_link;
+
+            @media (min-width: v.$tv) {
+                margin-block: m.px-to-vw(48px) m.px-to-vw(25px);
+            }
+
+            @include m.tv {
+                margin-block: 35px 18px;
+            }
+
+            @include m.tablet {
+                margin-top: 30px;
+            }
+        }
+
+        .links {
+            @media (min-width: v.$tv) {
+                @include m.flex(flex-start, m.px-to-vw(12px));
+            }
+
+            @include m.tv {
+                @include m.flex(flex-start, 7px);
+            }
+
+            @include m.tablet {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 30px;
+            }
+
+            p,
+            a {
+                @include m.p;
+                font-family: v.$gotham_m;
+                font-weight: 400;
+            }
+        }
+    }
+
+    &_suscription {
+
+        &-form {
+
+            @media (min-width: v.$tv) {
+                margin-top: m.px-to-vw(30px);
+            }
+
+            @include m.tv {
+                margin-top: 30px;
+            }
+
+            #gform_fields_1 {
+                @include m.tablet {
+                    gap: 12px;
+                }
+            }
+
+            .gfield_required,
+            .gform_heading {
+                display: none !important;
+            }
+
+            form {
+                width: 100%;
+                position: relative;
+
+                .gform-footer {
+                    @media (min-width: v.$laptop){
+                        position: absolute;
+                        right: 0;
+                    }
+                    margin: 0 !important;
+
+                    @media (min-width: v.$tv) {
+                        top: m.px-to-vw(68px) !important;
+                        width: m.px-to-vw(156px) !important;
+                    }
+
+                    @include m.tv {
+                        bottom: 36px !important;
+                        width: 156px !important;
+                    }
+
+                    @include m.laptop{
+                        bottom: auto !important;
+                        top: auto !important;
+                        margin-top: 12px !important;
+                    }
+
+                }
+
+                [type="submit"] {
+                    width: 100% !important;
+
+                    color: v.$light_brown !important;
+                    font-family: v.$gotham_light !important;
+                    font-weight: 300 !important;
+                    text-transform: uppercase !important;
+
+                    @media (min-width: v.$tv) {
+                        font-size: px-to-vw(17px) !important;
+                        line-height: px-to-vw(23.8px) !important;
+                        letter-spacing: px-to-vw(1.02px) !important;
+                        height: m.px-to-vw(52px) !important;
+                    }
+
+                    @include m.tv {
+                        font-size: 14.5px !important;
+                        line-height: 1.3em !important;
+                        letter-spacing: 0.4px !important;
+                    }
+
+                    @media (min-width: v.$tv) {
+                        border: m.px-to-vw(1px) solid v.$light_brown !important;
+                    }
+
+                    @include m.tv {
+                        border: 1px solid v.$light_brown !important;
+                    }
+                }
+
+                [type="submit"],
+                input {
+                    border-radius: 0 !important;
+                    box-shadow: none !important;
+                    outline: none !important;
+                    background: transparent !important;
+                }
+
+                input {
+
+                    &:not([type="checkbox"]) {
+                        @media (min-width: v.$tv) {
+                            height: m.px-to-vw(52px) !important;
+                        }
+
+                        @include m.tv {
+                            height: 38px !important;
+                        }
+                    }
+
+                    &:not([type="submit"], [type="checkbox"]) {
+                        @include m.p;
+                        width: 100%;
+
+                        @media (min-width: v.$tv) {
+                            border: m.px-to-vw(1px) solid rgba($color: v.$black, $alpha: 0.8);
+                        }
+
+                        @include m.tv {
+                            border: 1px solid rgba($color: v.$black, $alpha: 0.8);
+                        }
+                    }
+
+                    &[type="checkbox"] {
+                        @include m.p;
+
+                        @media (min-width: v.$tv) {
+                            @include m.square(m.px-to-vw(16px));
+                        }
+
+                        @include m.tv {}
+
+                        border-color: v.$light_brown;
+
+                        &::before {
+                            color: v.$light_brown !important;
+
+                            @media (min-width: v.$tv) {
+                                @include m.square(m.px-to-vw(16px));
+                            }
+
+                            @include m.tv {
+                                @include m.square(16px);
+                            }
+                        }
+                    }
+
+                    &[type="email"] {
+                        @media (min-width: v.$tv) {
+                            width: calc(100% - m.px-to-vw(168px)) !important;
+                        }
+
+                        @include m.tv {
+                            width: calc(100% - 168px) !important;
+                        }
+
+                        @include m.laptop{
+                            width: 100% !important;
+                        }
+                    }
+
+                    &[type="submit"] {
+                        color: v.$light_brown !important;
+                        text-transform: uppercase !important;
+                        font-family: v.$gotham_light !important;
+                        font-weight: 300 !important;
+
+                        @media (min-width: v.$tv) {
+                            font-size: m.px-to-vw(17px) !important;
+                            line-height: m.px-to-vw(23.8px) !important;
+                            letter-spacing: m.px-to-vw(1.02px) !important;
+                        }
+
+                        @include m.tv {
+                            font-size: 17px !important;
+                            line-height: 23px !important;
+                            letter-spacing: 1.02px !important;
+                        }
+
+                        width: 100% !important;
+
+                        @media (min-width: v.$tv) {
+                            border: m.px-to-vw(1px) solid v.$light_brown !important;
+                        }
+
+                        @include m.tv {
+                            border: 1px solid v.$light_brown !important;
+                        }
+                    }
+                }
+
+                .ginput_container_consent {
+                    @media (min-width: v.$tv) {
+                        display: flex !important;
+                        align-items: center;
+                        justify-content: flex-start !important;
+                        gap: m.px-to-vw(12px) !important;
+                    }
+
+                    @include m.tv {
+                        gap: 12px !important;
+                    }
+
+                    label,
+                    input {
+                        @media (min-width: v.$tv) {
+                            margin: 0 !important;
+                        }
+
+                        @include m.tv {}
+                    }
+
+                    label {
+                        @include m.p;
+                    }
+
+                    a {
+                        color: v.$black;
+                        text-decoration: underline;
+                    }
+                }
+
+                .gform_fields {
+                    @media (min-width: v.$tv) {
+                        column-gap: m.px-to-vw(12px) !important;
+                        row-gap: m.px-to-vw(16px) !important;
+                    }
+
+                    @include m.tv {
+                        column-gap: 12px !important;
+                        row-gap: 16px !important;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,87 @@
+// ============================
+// FONTS
+// ============================
+@font-face {
+    font-family: 'GothamRegular';
+    src: url(../../fonts/GothamRegular.otf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GothamMedium';
+    src: url(../../fonts/GothamMedium.otf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GothamLight';
+    src: url(../../fonts/GothamLight.otf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GoudyTitlingSemiBold';
+    src: url(../../fonts/GoudyTitlingSemiBold.ttf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GoudyTitlingRegular';
+    src: url(../../fonts/GoudyTitlingRegular.otf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CormorantGaramond';
+    src: url(../../fonts/CormorantGaramond.ttf);
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CanelaTextLight';
+    src: url(../../fonts/CanelaTextLight.otf);
+    font-display: swap;
+}
+
+
+// ============================
+// FONTS
+// ============================
+$goudy: 'GoudyTitlingRegular';
+$goudysb: 'GoudyTitlingSemiBold';
+$gotham: 'GothamRegular';
+$gotham_m: 'GothamMedium';
+$gotham_light: 'GothamLight';
+$cormorant: 'CormorantGaramond';
+$canela_text: 'CanelaTextLight';
+
+// ============================
+// BREAKPOINTS (Media Queries)
+// ============================
+$breakpoints: (
+    phone: 480px,
+    tablet: 768px,
+    laptop: 1024px,
+    desktop: 1200px,
+    tv: 1420px
+);
+
+// Para usar sin map, si lo prefieres también
+$phone: map-get($breakpoints, phone);
+$tablet: map-get($breakpoints, tablet);
+$laptop: map-get($breakpoints, laptop);
+$desktop: map-get($breakpoints, desktop);
+$tv: map-get($breakpoints, tv);
+
+
+// ============================
+// COLORS
+// ============================
+$beige: #F5F2EE;
+$light_brown: #8C6E47;
+$light_brown_2: #D3C7B6;
+$black: #000000;
+$white: #ffffff;
+$bg: #E5DDD2;
+$gray_light: #F5F5F5;
+$clear_brown: #EEE9E2;

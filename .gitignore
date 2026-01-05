@@ -1,0 +1,6 @@
+src/node_modules
+public/css/app.min.css
+public/css/app.min.css.map
+public/js/main.min.js
+public/js/main.js.min.map
+vendor/
