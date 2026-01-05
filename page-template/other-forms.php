@@ -18,11 +18,11 @@ $vehicle_id = isset($_GET['vehicle']) ? absint($_GET['vehicle']) : '';
         <div class="advertise_form apply_to_form mb0">
             <?php
             if (is_page('telephone-bid')) {
-                echo do_shortcode('[gravityform id="8" title="true" ajax="true"]');
+                echo do_shortcode('[gravityform id="6" title="true" ajax="true"]');
             } elseif (is_page('commision-bid')) {
-                echo do_shortcode('[gravityform id="12" title="true" ajax="true"]');
+                echo do_shortcode('[gravityform id="7" title="true" ajax="true"]');
             } elseif (is_page('request-condition-report')) {
-                echo do_shortcode('[gravityform id="13" title="true" ajax="true"]');
+                echo do_shortcode('[gravityform id="8" title="true" ajax="true"]');
             }
             ?>
         </div>
@@ -41,13 +41,15 @@ $vehicle_id = isset($_GET['vehicle']) ? absint($_GET['vehicle']) : '';
     if (!empty($vehicle_title)):
     ?>
         <script>
+            const vehicleTitle = <?php echo json_encode(html_entity_decode($vehicle_title, ENT_QUOTES | ENT_HTML5, 'UTF-8')); ?>;
+            console.log(vehicleTitle);
             function setVehicle() {
                 setTimeout(() => {
                     if (document.querySelector('form [type="hidden"]')) {
                         document.querySelector('form [type="hidden"]').value = '<?php echo $vehicle_id; ?>';
                     }
                     if (document.querySelector('.lots_list input')) {
-                        document.querySelector('.lots_list input').value = '<?php echo $vehicle_title; ?>';
+                        document.querySelector('.lots_list input').value = vehicleTitle;
                     }
                 }, 500);
             }

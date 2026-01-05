@@ -2,54 +2,55 @@
 
 add_action('admin_footer', function () {
     $screen = get_current_screen();
-    if (!$screen || $screen->post_type !== 'vehicles') return;
+    if (!$screen || $screen->post_type !== 'vehicles')
+        return;
     ?>
     <script>
-    jQuery(function($){
-        const $auctionNumber = $('[data-key="field_auction_number_latest"] input');
-        const $auctionDate = $('[data-key="field_auction_date_latest"] input');
+        jQuery(function ($) {
+            const $auctionNumber = $('[data-key="field_auction_number_latest"] input');
+            const $auctionDate = $('[data-key="field_auction_date_latest"] input');
 
-        let timer = null;
+            let timer = null;
 
-		if($auctionNumber && $auctionDate){
-        	$auctionNumber.on('input', function(){
-            	const value = $(this).val().trim();
+            if ($auctionNumber && $auctionDate) {
+                $auctionNumber.on('input', function () {
+                    const value = $(this).val().trim();
 
-            	clearTimeout(timer);
+                    clearTimeout(timer);
 
-            	if (!value) {
-                	$auctionDate.val('');
-                	return;
-            	}
+                    if (!value) {
+                        $auctionDate.val('');
+                        return;
+                    }
 
-            	// Espera 500ms después de dejar de escribir
-            	timer = setTimeout(() => {
-                	fetch(ajaxurl, {
-                    	method: 'POST',
-                    	headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    	body: new URLSearchParams({
-                        	action: 'get_auction_date_by_number',
-                        	number: value
-                    	})
-                	})
-                	.then(res => res.json())
-                	.then(data => {
-                    	if (data && data.success) {
-                        	$auctionDate.val(data.data.date);
-                    	} else {
-                        	$auctionDate.val('');
-                    	}
-                	})
-                	.catch(err => console.error('Error fetching auction date:', err));
-            	}, 500);
-        	});
-        }
-    });
+                    // Espera 500ms después de dejar de escribir
+                    timer = setTimeout(() => {
+                        fetch(ajaxurl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                            body: new URLSearchParams({
+                                action: 'get_auction_date_by_number',
+                                number: value
+                            })
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data && data.success) {
+                                    $auctionDate.val(data.data.date);
+                                } else {
+                                    $auctionDate.val('');
+                                }
+                            })
+                            .catch(err => console.error('Error fetching auction date:', err));
+                    }, 500);
+                });
+            }
+        });
     </script>
     <?php
 });
 
-add_action('wp_ajax_get_auction_date_by_number', function() {
+add_action('wp_ajax_get_auction_date_by_number', function () {
     if (empty($_POST['number'])) {
         wp_send_json_error(['message' => 'Missing number']);
     }

@@ -707,7 +707,7 @@ if (!function_exists('hnh_render_buy_it_now_block')) {
         // Years
         $yf_sel = $year_from_param;
         $yt_sel = $year_to_param;
-        $minYear = (int) $opt['min_year'];
+        $minYear = (int) ($opt['min_year'] ?? 1920);
         $maxYear = (int) date('Y');
 
         ob_start();
